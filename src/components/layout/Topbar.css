@@ -1,0 +1,74 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: var(--sidebar-width);
+  height: var(--topbar-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 50;
+  transition: left var(--transition-normal);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.sidebar-collapsed ~ .layout-main .topbar {
+  left: var(--sidebar-collapsed);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.topbar-menu-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.topbar-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1279px) and (min-width: 1024px) {
+  .topbar {
+    left: var(--sidebar-collapsed);
+  }
+}
+
+@media (max-width: 1023px) {
+  .topbar {
+    left: 0;
+  }
+
+  .topbar-menu-btn {
+    display: flex;
+  }
+}

@@ -1,0 +1,44 @@
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.skeleton-line,
+.skeleton-cell,
+.skeleton-card {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-line {
+  height: 16px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.skeleton-line:last-child {
+  width: 60%;
+}
+
+.skeleton-row {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.skeleton-cell {
+  height: 16px;
+}
+
+.skeleton-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.skeleton-card {
+  height: 120px;
+}

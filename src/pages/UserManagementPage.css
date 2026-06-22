@@ -1,0 +1,29 @@
+.user-management-page {
+  padding: 24px;
+}
+
+.user-management-page .page-header {
+  margin-bottom: 24px;
+}
+
+.user-management-page .page-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.user-management-page .page-header p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.content-placeholder {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 48px;
+  text-align: center;
+  color: var(--text-secondary);
+}
