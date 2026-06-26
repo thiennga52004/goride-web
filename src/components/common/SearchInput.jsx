@@ -9,7 +9,7 @@ const SearchInput = ({ value, onChange, placeholder = 'Tìm kiếm...', classNam
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
-        style={{ width: '100%', background: 'var(--bg-tertiary)', border: '1px solid var(--glass-border)', borderRadius: 'var(--radius-sm)', padding: '10px 12px 10px 36px', color: 'var(--text-primary)', fontSize: '14px', outline: 'none' }}
+        style={{ width: '100%', background: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-sm)', padding: '10px 12px 10px 36px', color: 'var(--text-primary)', fontSize: '14px', outline: 'none' }}
       />
     </div>
   );

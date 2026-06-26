@@ -29,7 +29,7 @@ function App() {
           style: {
             background: 'var(--bg-secondary)',
             color: 'var(--text-primary)',
-            border: '1px solid var(--glass-border)',
+            border: '1px solid var(--border-color)',
             borderRadius: 'var(--radius-sm)',
             fontSize: '14px',
           },

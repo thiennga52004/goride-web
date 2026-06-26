@@ -10,35 +10,37 @@
    ========================================== */
 :root {
   /* Background */
-  --bg-primary: #0f1117;
-  --bg-secondary: #1a1d2e;
-  --bg-tertiary: #242842;
-  --bg-glass: rgba(26, 29, 46, 0.7);
+  --bg-primary: #F8F9FA;          /* Main layout — light grayish-white */
+  --bg-secondary: #FFFFFF;        /* Cards, surfaces, topbar */
+  --bg-tertiary: #E9ECEF;         /* Hover states, table header */
+  --bg-sidebar: #343A40;          /* Sidebar — dark navy */
 
   /* Text */
-  --text-primary: #f0f0f5;
-  --text-secondary: #8b8fa3;
-  --text-tertiary: #5a5f7a;
+  --text-heading: #212529;        /* Headings — dark slate */
+  --text-primary: #495057;        /* Main body text */
+  --text-secondary: #6C757D;      /* Labels, captions */
+  --text-tertiary: #ADB5BD;       /* Placeholders, disabled */
+  --text-sidebar: #FFFFFF;        /* Sidebar text */
+  --text-sidebar-muted: rgba(255, 255, 255, 0.6); /* Sidebar secondary */
 
-  /* Accent — Neon palette */
-  --accent-green: #00e5a0;
-  --accent-blue: #3b82f6;
-  --accent-red: #ef4444;
-  --accent-yellow: #f59e0b;
-  --accent-purple: #8b5cf6;
+  /* Accent — Clean palette */
+  --accent-primary: #0D6EFD;      /* Primary action — vibrant blue */
+  --accent-green: #198754;        /* Success, active, completed */
+  --accent-red: #DC3545;          /* Danger, cancelled, suspended */
+  --accent-yellow: #FFC107;       /* Warning, pending */
+  --accent-purple: #6610F2;       /* Info, stats highlight */
 
-  /* Glassmorphism */
-  --glass-bg: rgba(26, 29, 46, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-blur: blur(16px);
+  /* Borders */
+  --border-color: #DEE2E6;
+  --border-light: #E9ECEF;
 
   /* Spacing, radius, shadows */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
-  --shadow-glow-green: 0 0 20px rgba(0, 229, 160, 0.15);
-  --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-dropdown: 0 4px 16px rgba(0, 0, 0, 0.1);
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -81,7 +83,7 @@ body {
 }
 
 a {
-  color: var(--accent-blue);
+  color: var(--accent-primary);
   text-decoration: none;
 }
 
@@ -119,7 +121,7 @@ input, select, textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
+  background: var(--border-color);
   border-radius: 3px;
 }
 
@@ -200,11 +202,9 @@ input, select, textarea {
 /* ==========================================
    Utility Classes
    ========================================== */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
 }
@@ -224,11 +224,12 @@ input, select, textarea {
 /* ==========================================
    Typography Helpers
    ========================================== */
+.text-heading { color: var(--text-heading); }
 .text-primary { color: var(--text-primary); }
 .text-secondary { color: var(--text-secondary); }
 .text-tertiary { color: var(--text-tertiary); }
+.text-accent-primary { color: var(--accent-primary); }
 .text-accent-green { color: var(--accent-green); }
-.text-accent-blue { color: var(--accent-blue); }
 .text-accent-red { color: var(--accent-red); }
 .text-accent-yellow { color: var(--accent-yellow); }
 .text-accent-purple { color: var(--accent-purple); }

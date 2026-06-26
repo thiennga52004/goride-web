@@ -19,7 +19,8 @@ const DataTable = ({ columns = [], data = [], loading = false, emptyMessage = 'K
                   color: 'var(--text-secondary)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px',
-                  borderBottom: '1px solid var(--glass-border)',
+                  borderBottom: '2px solid var(--border-color)',
+                  background: 'var(--bg-tertiary)',
                   cursor: col.sortable ? 'pointer' : 'default',
                   whiteSpace: 'nowrap',
                 }}
@@ -32,7 +33,7 @@ const DataTable = ({ columns = [], data = [], loading = false, emptyMessage = 'K
         </thead>
         <tbody>
           {data.map((row, rowIndex) => (
-            <tr key={row.id || rowIndex} style={{ borderBottom: '1px solid var(--glass-border)' }}>
+            <tr key={row.id || rowIndex} style={{ borderBottom: '1px solid var(--border-color)' }}>
               {columns.map((col) => (
                 <td
                   key={col.key}

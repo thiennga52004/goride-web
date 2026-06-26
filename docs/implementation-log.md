@@ -71,3 +71,75 @@
 ### Known Risks
 - Node.js version warnings (v20.16.0, cần >= v20.19.0) — không ảnh hưởng chức năng
 - Feature components đang là skeleton — cần implement ở các giai đoạn tiếp theo
+
+---
+
+## Entry #2 — Admin UI Theme Refactor (Clean Light Mode)
+
+| Field | Value |
+|---|---|
+| **Date** | 2026-06-26 |
+| **Branch** | `refactor-admin-ui-theme` |
+| **Phase** | Phase 1 — Foundation (Refactor Theme) |
+| **Task** | Thay đổi giao diện của admin từ Dark Mode + Glassmorphism sang Clean Light Mode |
+
+### Files Modified
+
+**Docs & Configuration:**
+- `docs/admin_implementation_plan_v2.md`
+- `src/App.jsx`
+- `src/index.css`
+
+**Layout:**
+- `src/components/layout/Sidebar.css`
+- `src/components/layout/Topbar.css`
+
+**Common Components:**
+- `src/components/common/Button.css`
+- `src/components/common/DataTable.jsx`
+- `src/components/common/DateRangePicker.jsx`
+- `src/components/common/Drawer.jsx`
+- `src/components/common/EmptyState.jsx`
+- `src/components/common/LoadingSkeleton.css`
+- `src/components/common/Modal.jsx`
+- `src/components/common/Pagination.jsx`
+- `src/components/common/SearchInput.jsx`
+- `src/components/common/StatCard.jsx`
+
+**Feature Components:**
+- `src/components/dashboard/RecentTrips.jsx`
+- `src/components/dashboard/RevenueChart.jsx`
+- `src/components/dashboard/TripStatusChart.jsx`
+- `src/components/drivers/DriverApprovalCard.jsx`
+- `src/components/pricing/PricingCard.jsx`
+- `src/components/users/UserStatusToggle.jsx`
+
+**Pages:**
+- `src/pages/LoginPage.css`
+- `src/pages/DashboardPage.css`
+- `src/pages/UserManagementPage.css`
+- `src/pages/NotFoundPage.jsx`
+- `src/pages/DriverApprovalPage.jsx`
+- `src/pages/PricingConfigPage.jsx`
+- `src/pages/TripDetailPage.jsx`
+- `src/pages/TripHistoryPage.jsx`
+- `src/pages/UserDetailPage.jsx`
+
+**Utils:**
+- `src/utils/statusHelpers.js`
+
+### Behavior Implemented
+- Chuyển đổi toàn bộ layout sang Clean Light Mode (Background `#F8F9FA`, surfaces/cards `#FFFFFF`).
+- Sidebar đổi sang dark navy `#343A40` với chữ màu trắng và active highlight màu vibrant blue `#0D6EFD`.
+- Headings đổi sang dark slate `#212529`, body text đổi sang medium gray `#6C757D`.
+- Buttons và primary actions sử dụng vibrant blue `#0D6EFD`.
+- Loại bỏ hoàn toàn hiệu ứng kính (glassmorphism), thay bằng flat card, border mỏng `#DEE2E6` và shadow nhẹ (`--shadow-card`).
+- Cập nhật bảng màu cho các badge trạng thái (status badges) trong hệ thống để hài hòa với tone màu sáng mới.
+
+### Validation
+- `npm run build` chạy thành công (built in 3.02s).
+- Không còn bất kỳ tham chiếu nào đến CSS variables cũ như `glass-bg`, `glass-border`, `glass-blur`, `accent-blue`, `shadow-glow` trong code.
+
+### Known Risks
+- Cần chạy lại ứng dụng trên dev server (`npm run dev`) để kiểm tra lại trực quan giao diện (contrast, spacing) khi hiển thị thực tế các components.
+

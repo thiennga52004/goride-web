@@ -9,7 +9,7 @@
 .user-management-page .page-header h1 {
   font-size: 24px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-heading);
   margin-bottom: 4px;
 }
 
@@ -19,11 +19,11 @@
 }
 
 .content-placeholder {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 48px;
   text-align: center;
   color: var(--text-secondary);
+  box-shadow: var(--shadow-card);
 }

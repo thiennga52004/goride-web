@@ -135,7 +135,7 @@ goride-web/
 └── src/
     ├── main.jsx                    ← Entry point, render <App />
     ├── App.jsx                     ← Router setup, global providers
-    ├── index.css                   ← CSS reset, variables, glassmorphism, animations
+    ├── index.css                   ← CSS reset, variables, flat cards, animations
     │
     ├── assets/
     │   ├── logo.svg
@@ -251,34 +251,37 @@ goride-web/
 ```css
 :root {
   /* Background */
-  --bg-primary: #0f1117;          /* Main background - Deep dark */
-  --bg-secondary: #1a1d2e;       /* Cards, sidebar */
-  --bg-tertiary: #242842;        /* Elevated surfaces */
-  --bg-glass: rgba(26, 29, 46, 0.7); /* Glassmorphism */
+  --bg-primary: #F8F9FA;          /* Main layout — light grayish-white */
+  --bg-secondary: #FFFFFF;        /* Cards, surfaces, topbar */
+  --bg-tertiary: #E9ECEF;         /* Hover states, table header */
+  --bg-sidebar: #343A40;          /* Sidebar — dark navy */
 
   /* Text */
-  --text-primary: #f0f0f5;       /* Main text */
-  --text-secondary: #8b8fa3;     /* Muted text */
-  --text-tertiary: #5a5f7a;      /* Disabled text */
+  --text-heading: #212529;        /* Headings — dark slate */
+  --text-primary: #495057;        /* Main body text */
+  --text-secondary: #6C757D;      /* Labels, captions */
+  --text-tertiary: #ADB5BD;       /* Placeholders, disabled */
+  --text-sidebar: #FFFFFF;        /* Sidebar text */
+  --text-sidebar-muted: rgba(255, 255, 255, 0.6); /* Sidebar secondary */
 
-  /* Accent - Neon palette */
-  --accent-green: #00e5a0;       /* Success, active, completed */
-  --accent-blue: #3b82f6;        /* Primary actions, links */
-  --accent-red: #ef4444;         /* Danger, cancelled, suspended */
-  --accent-yellow: #f59e0b;      /* Warning, pending */
-  --accent-purple: #8b5cf6;      /* Info, stats highlight */
+  /* Accent — Clean palette */
+  --accent-primary: #0D6EFD;      /* Primary action — vibrant blue */
+  --accent-green: #198754;        /* Success, active, completed */
+  --accent-red: #DC3545;          /* Danger, cancelled, suspended */
+  --accent-yellow: #FFC107;       /* Warning, pending */
+  --accent-purple: #6610F2;       /* Info, stats highlight */
 
-  /* Glassmorphism */
-  --glass-bg: rgba(26, 29, 46, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-blur: blur(16px);
+  /* Borders */
+  --border-color: #DEE2E6;
+  --border-light: #E9ECEF;
 
   /* Spacing, radius, shadows */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
-  --shadow-glow-green: 0 0 20px rgba(0, 229, 160, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-dropdown: 0 4px 16px rgba(0, 0, 0, 0.1);
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -294,10 +297,11 @@ goride-web/
 
 ### 5.2 Phong cách thiết kế
 
-- **Dark Mode Premium**: Nền tối sâu, chữ sáng, accent neon
-- **Glassmorphism**: Cards, sidebar, modals có `backdrop-filter: blur(16px)` + viền subtle
-- **Micro-animations**: Hover scale trên buttons, fade-in khi load data, smooth sidebar collapse
-- **Typography**: Inter font, font-weight 400/500/600/700
+- **Clean Light Mode**: Nền sáng nhẹ (#F8F9FA), cards trắng, dễ đọc, giảm mỏi mắt
+- **Sidebar Dark Navy**: Sidebar sử dụng #343A40 tạo tương phản rõ ràng với content area
+- **Flat Design**: Cards với border nhẹ và shadow tinh tế, không glassmorphism
+- **Subtle animations**: Fade-in khi load, hover nhẹ trên buttons/rows, smooth sidebar collapse
+- **Typography**: Inter font, headings dark slate (#212529), body medium gray (#6C757D)
 - **Consistent spacing**: Dùng `8px` grid system (8, 16, 24, 32, 48px)
 
 ### 5.3 Responsive Strategy
@@ -324,7 +328,7 @@ goride-web/
 5. Redirect về trang đã yêu cầu trước đó hoặc `/dashboard`
 
 **UI:**
-- Centered card trên nền dark gradient
+- Centered card trên nền sáng gradient nhẹ
 - Logo GoRide phía trên form
 - Input fields: Phone, Password
 - Button "Đăng nhập" với loading spinner
@@ -605,7 +609,7 @@ VITE_USE_MOCK=false
 
 ### Giai đoạn 1: Foundation (1 tuần)
 - Khởi tạo React + Vite project
-- Setup CSS design system (variables, reset, glassmorphism, animations)
+- Setup CSS design system (variables, reset, flat cards, animations)
 - Cài đặt dependencies (react-router, zustand, axios, recharts, lucide-react, react-datepicker, react-hot-toast)
 - Cấu hình routing + ProtectedRoute
 - Xây dựng Layout (Sidebar + Topbar) với collapse behavior
