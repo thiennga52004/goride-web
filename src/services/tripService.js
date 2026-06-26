@@ -9,6 +9,12 @@ export const tripService = {
     if (USE_MOCK) {
       let filtered = [...mockTrips];
       if (params.status) filtered = filtered.filter((t) => t.status === params.status);
+      if (params.passengerId) {
+        filtered = filtered.filter((t) => t.passenger?.id === Number(params.passengerId));
+      }
+      if (params.driverId) {
+        filtered = filtered.filter((t) => t.driver?.id === Number(params.driverId));
+      }
       return {
         content: filtered.slice((params.page || 0) * (params.size || 10), ((params.page || 0) + 1) * (params.size || 10)),
         totalElements: filtered.length,

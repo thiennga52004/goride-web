@@ -1,8 +1,18 @@
+import Button from '../common/Button';
+
 const UserStatusToggle = ({ user, onToggle }) => {
+  if (!user) return null;
+
+  const isActive = user.status === 'ACTIVE';
+
   return (
-    <button style={{ padding: '6px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-color)', background: 'var(--bg-tertiary)', color: 'var(--text-primary)', cursor: 'pointer', fontSize: '13px' }}>
-      Toggle Status
-    </button>
+    <Button
+      variant={isActive ? 'danger' : 'success'}
+      size="sm"
+      onClick={() => onToggle?.(user)}
+    >
+      {isActive ? 'Khóa' : 'Mở khóa'}
+    </Button>
   );
 };
 

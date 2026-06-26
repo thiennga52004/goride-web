@@ -21,6 +21,10 @@ export const driverService = {
 
   approveDriver: async (driverId, note = '') => {
     if (USE_MOCK) {
+      const idx = mockPendingDrivers.findIndex((d) => d.id === Number(driverId));
+      if (idx !== -1) {
+        mockPendingDrivers.splice(idx, 1);
+      }
       return { success: true, message: `Driver ${driverId} approved` };
     }
     return api.patch(API_ENDPOINTS.ADMIN_DRIVER_APPROVAL(driverId), {
@@ -31,6 +35,10 @@ export const driverService = {
 
   rejectDriver: async (driverId, note = '') => {
     if (USE_MOCK) {
+      const idx = mockPendingDrivers.findIndex((d) => d.id === Number(driverId));
+      if (idx !== -1) {
+        mockPendingDrivers.splice(idx, 1);
+      }
       return { success: true, message: `Driver ${driverId} rejected` };
     }
     return api.patch(API_ENDPOINTS.ADMIN_DRIVER_APPROVAL(driverId), {

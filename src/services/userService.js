@@ -16,6 +16,17 @@ export const userService = {
           (u) => u.name.toLowerCase().includes(s) || u.phone.includes(s)
         );
       }
+      if (params.sortField) {
+        const field = params.sortField;
+        const dir = params.sortDirection === 'desc' ? -1 : 1;
+        filtered.sort((a, b) => {
+          const valA = a[field] ? String(a[field]).toLowerCase() : '';
+          const valB = b[field] ? String(b[field]).toLowerCase() : '';
+          if (valA < valB) return -1 * dir;
+          if (valA > valB) return 1 * dir;
+          return 0;
+        });
+      }
       return {
         content: filtered.slice((params.page || 0) * (params.size || 10), ((params.page || 0) + 1) * (params.size || 10)),
         totalElements: filtered.length,
@@ -35,6 +46,10 @@ export const userService = {
 
   updateUserStatus: async (userId, status, reason = '') => {
     if (USE_MOCK) {
+      const user = mockUsers.find((u) => u.id === Number(userId));
+      if (user) {
+        user.status = status;
+      }
       return { success: true, message: `User ${userId} status updated to ${status}` };
     }
     return api.patch(API_ENDPOINTS.ADMIN_USER_STATUS(userId), { status, reason });
