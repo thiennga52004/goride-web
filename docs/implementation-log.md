@@ -143,3 +143,47 @@
 ### Known Risks
 - Cần chạy lại ứng dụng trên dev server (`npm run dev`) để kiểm tra lại trực quan giao diện (contrast, spacing) khi hiển thị thực tế các components.
 
+---
+
+## Entry #3 — Phase 2: Auth + Dashboard Complete
+
+| Field | Value |
+|---|---|
+| **Date** | 2026-06-26 |
+| **Branch** | `refactor-admin-ui-theme` |
+| **Phase** | Phase 2 — Auth + Dashboard |
+| **Task** | Triển khai hoàn thiện logic LoginPage và DashboardPage với các biểu đồ, số liệu thống kê và bảng chuyến đi gần đây |
+
+### Files Modified
+
+**Pages:**
+- `src/pages/LoginPage.jsx`
+- `src/pages/DashboardPage.jsx`
+- `src/pages/DashboardPage.css`
+
+**Dashboard Components:**
+- `src/components/dashboard/StatsOverview.jsx`
+- `src/components/dashboard/RevenueChart.jsx`
+- `src/components/dashboard/TripStatusChart.jsx`
+- `src/components/dashboard/RecentTrips.jsx`
+
+**Hooks:**
+- `src/hooks/useFetch.js`
+
+### Behavior Implemented
+- **Đăng nhập**: LoginPage tích hợp hook `useAuth`, quản lý trạng thái loading/submit và xử lý thông báo lỗi từ API.
+- **Trang tổng quan**: DashboardPage hiển thị số liệu động. Tích hợp bộ lọc ngày `DateRangePicker` tự động trigger tải lại dữ liệu (refetch) thông qua hook `useFetch`. Hiển thị skeleton loaders trong khi fetch dữ liệu.
+- **Thống kê**: StatsOverview hiển thị 6 thẻ tổng hợp (Doanh thu, Chuyến đi, Khách hàng, Tài xế, Trạng thái).
+- **Biểu đồ**: 
+  - RevenueChart hiển thị xu hướng Doanh thu (vùng diện tích Area màu xanh) & Số chuyến đi (đường Line màu tím) dùng trục Y kép.
+  - TripStatusChart hiển thị tỉ lệ phần trăm các trạng thái chuyến đi dưới dạng Donut PieChart, cell màu lấy từ `statusHelpers.js`.
+- **Chuyến đi gần đây**: RecentTrips hiển thị 5 chuyến đi mới nhất bằng DataTable kết hợp StatusBadge.
+
+### Validation
+- `npm run lint` kiểm tra đạt chuẩn, 0 lỗi trong các file sửa đổi.
+- `npm run build` tạo gói production thành công (built in 10.26s).
+- Đã kiểm tra hoạt động trên dev server local tại cổng `5173`.
+
+### Known Risks
+- Mock data hoạt động tốt; cần test tích hợp thực tế khi bật kết nối API thật (`VITE_USE_MOCK=false`) để đảm bảo không lỗi format ngày hoặc kiểu dữ liệu số.
+

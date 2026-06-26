@@ -21,10 +21,18 @@ export const useFetch = (fetchFn, params = null, immediate = true) => {
   }, [fetchFn, params]);
 
   useEffect(() => {
+    let active = true;
     if (immediate) {
-      execute();
+      setTimeout(() => {
+        if (active) {
+          execute();
+        }
+      }, 0);
     }
-  }, []);
+    return () => {
+      active = false;
+    };
+  }, [execute, immediate]);
 
   const refetch = useCallback(() => execute(), [execute]);
 

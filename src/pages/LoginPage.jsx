@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
 import './LoginPage.css';
 
 const LoginPage = () => {
+  const { login } = useAuth();
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -9,7 +11,19 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement login logic
+    if (!phone || !password) {
+      setError('Vui lòng điền đầy đủ thông tin');
+      return;
+    }
+    setLoading(true);
+    setError('');
+    try {
+      await login(phone, password);
+    } catch (err) {
+      setError(err.response?.data?.message || err.message || 'Đăng nhập thất bại');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
