@@ -14,7 +14,11 @@ export const pricingService = {
 
   updatePricingConfig: async (pricingConfigId, data) => {
     if (USE_MOCK) {
-      return { success: true, message: 'Pricing updated', data };
+      const config = mockPricingConfigs.find((c) => c.id === Number(pricingConfigId));
+      if (config) {
+        Object.assign(config, data);
+      }
+      return { success: true, message: 'Pricing updated', data: config };
     }
     return api.put(API_ENDPOINTS.ADMIN_PRICING_UPDATE(pricingConfigId), data);
   },

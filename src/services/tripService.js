@@ -15,6 +15,37 @@ export const tripService = {
       if (params.driverId) {
         filtered = filtered.filter((t) => t.driver?.id === Number(params.driverId));
       }
+      if (params.search) {
+        const s = params.search.toLowerCase();
+        filtered = filtered.filter(
+          (t) =>
+            t.passenger?.name.toLowerCase().includes(s) ||
+            (t.driver && t.driver.name.toLowerCase().includes(s))
+        );
+      }
+      if (params.from) {
+        filtered = filtered.filter((t) => t.requestedAt >= params.from);
+      }
+      if (params.to) {
+        filtered = filtered.filter((t) => t.requestedAt <= params.to + 'T23:59:59.999Z');
+      }
+      if (params.sortField) {
+        const field = params.sortField;
+        const dir = params.sortDirection === 'desc' ? -1 : 1;
+        filtered.sort((a, b) => {
+          let valA = a[field];
+          let valB = b[field];
+          if (field === 'fare') {
+            valA = a.actualFare || a.estimatedFare;
+            valB = b.actualFare || b.estimatedFare;
+          }
+          const strA = valA ? String(valA).toLowerCase() : '';
+          const strB = valB ? String(valB).toLowerCase() : '';
+          if (strA < strB) return -1 * dir;
+          if (strA > strB) return 1 * dir;
+          return 0;
+        });
+      }
       return {
         content: filtered.slice((params.page || 0) * (params.size || 10), ((params.page || 0) + 1) * (params.size || 10)),
         totalElements: filtered.length,
