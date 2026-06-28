@@ -1,16 +1,16 @@
 # GoRide Web Admin — Current Phase
 
 ## Active Feature
-**Auth + Dashboard** — Trang đăng nhập và Trang tổng quan hệ thống GoRide
+**Trip History & Pricing Configuration** — Quản lý lịch sử chuyến đi, chi tiết hành trình và cấu hình giá cước các dịch vụ
 
 ## Current Phase
-**Phase 2 — Auth + Dashboard** (theo `admin_implementation_plan_v2.md` Section 10)
+**Phase 4 — Trip History + Pricing** (theo `admin_implementation_plan_v2.md` Section 10)
 
 ## Branch
 `refactor-admin-ui-theme`
 
 ## Status
-🟢 Completed — Auth & Dashboard đã được triển khai hoàn chỉnh, vượt qua kiểm thử build và lint
+🟢 Completed — Toàn bộ các tính năng Lịch sử chuyến đi, Chi tiết hành trình và Cấu hình giá đã được hoàn thành, linter đạt chuẩn 100%, build thành công
 
 ## Completed Steps
 - [x] Khởi tạo React + Vite project
@@ -27,16 +27,37 @@
 - [x] Tạo skeleton components (common, dashboard, users, drivers, trips, pricing)
 - [x] Tạo skeleton pages
 - [x] Refactor giao diện từ Dark Mode/Glassmorphism sang Clean Light Mode
-- [x] LoginPage logic (xử lý form, gọi useAuth login, quản lý loading và báo lỗi)
-- [x] StatsOverview component (grid 6 StatCards hiển thị doanh thu, chuyến đi, user)
-- [x] RevenueChart component (biểu đồ Recharts Area/Line, trục Y kép hiển thị xu hướng doanh thu và số chuyến)
-- [x] TripStatusChart component (biểu đồ tròn donut phân bổ trạng thái chuyến đi, cell màu đồng bộ từ config)
-- [x] RecentTrips component (bảng DataTable hiển thị 5 chuyến đi gần nhất đầy đủ thông tin)
-- [x] DashboardPage integration (quản lý khoảng ngày lọc, gọi useFetch đồng thời tải số liệu và chuyến đi, tích hợp loading skeleton và tự động cập nhật khi đổi bộ lọc)
-- [x] Sửa lỗi lint trong useFetch hook (set-state-in-effect và dependencies)
+- [x] LoginPage logic (form handling, useAuth integration)
+- [x] StatsOverview component (grid 6 StatCards)
+- [x] RevenueChart component (Area/Line chart, double Y-axes)
+- [x] TripStatusChart component (PieChart donut status display)
+- [x] RecentTrips component (DataTable showing 5 latest bookings)
+- [x] DashboardPage integration (date range state, double fetching, skeleton loaders)
+- [x] useFetch.js lint fix
+- [x] Pagination.jsx size and onSizeChange implementation
+- [x] UserFilters.jsx (search input, role/status select filters)
+- [x] UserStatusToggle.jsx (lock/unlock button)
+- [x] UserTable.jsx (DataTable integration, format columns, details link)
+- [x] UserManagementPage.jsx (fetch list, pagination, filter state, lock/unlock ConfirmDialog)
+- [x] UserDetailPage.jsx (profile info, driver vehicle info, paginated trip history tab)
+- [x] DriverApprovalCard.jsx (quick details card, quick actions)
+- [x] DriverProfileDrawer.jsx (vehicle details, CCCD, driver license info)
+- [x] DriverApprovalPage.jsx (pending drivers grid, drawer popup, ConfirmDialog approvals)
+- [x] tripService.js mock data search, filtering, and sorting support
+- [x] pricingService.js mock data update config mutation support
+- [x] TripFilters.jsx (SearchInput, Status select, DateRangePicker)
+- [x] TripTable.jsx (DataTable columns format, StatusBadge, details Link)
+- [x] TripHistoryPage.jsx (fetching, sorting, pagination, filtering)
+- [x] TripTimeline.jsx (visual vertical progress timeline)
+- [x] TripStatusHistory.jsx (audit log table)
+- [x] TripDetailPage.jsx (passenger/driver cards, detailed journey info, rating review, audit history logs integration)
+- [x] PricingCard.jsx (rates list card, edit drawer trigger)
+- [x] PricingEditForm.jsx (form fields, number validations, submit/cancel actions)
+- [x] PricingConfigPage.jsx (fetching, grid layout, Drawer popup, edit submit integration)
+- [x] Dọn dẹp cảnh báo linter trong các files sửa đổi (ESLint đạt chuẩn 100% không lỗi)
 
 ## Next Work
-- Giai đoạn 3: User Management + Driver Approval (DataTable nâng cao có sắp xếp/phân trang, trang quản lý người dùng, trang chi tiết người dùng, trang duyệt tài xế, drawer hồ sơ tài xế, hộp thoại xác nhận)
+- Giai đoạn 5: Polish + Test + Deploy (Responsive checking, Micro-animations, Error boundaries, API integration verification, Production deployment).
 
 ## User Review Required
-Cần user chạy thử tính năng Đăng nhập và Dashboard mới tích hợp, sau đó review code trước khi bắt đầu Phase 3.
+Cần user review toàn bộ các tính năng Lịch sử chuyến đi và Cấu hình giá cước trước khi tiến hành Giai đoạn 5 cuối cùng.

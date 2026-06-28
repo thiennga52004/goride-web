@@ -187,3 +187,48 @@
 ### Known Risks
 - Mock data hoạt động tốt; cần test tích hợp thực tế khi bật kết nối API thật (`VITE_USE_MOCK=false`) để đảm bảo không lỗi format ngày hoặc kiểu dữ liệu số.
 
+---
+
+## Entry #4 — Phase 4: Trip History + Pricing Config Complete
+
+| Field | Value |
+|---|---|
+| **Date** | 2026-06-28 |
+| **Branch** | `refactor-admin-ui-theme` |
+| **Phase** | Phase 4 — Trip History + Pricing Config |
+| **Task** | Triển khai hoàn thiện trang lịch sử chuyến đi, chi tiết chuyến đi và cấu hình giá cước |
+
+### Files Modified
+
+**Pages:**
+- `src/pages/TripHistoryPage.jsx`
+- `src/pages/TripHistoryPage.css`
+- `src/pages/TripDetailPage.jsx`
+- `src/pages/PricingConfigPage.jsx`
+
+**Components:**
+- `src/components/trips/TripFilters.jsx`
+- `src/components/trips/TripTable.jsx`
+- `src/components/trips/TripTimeline.jsx`
+- `src/components/trips/TripStatusHistory.jsx`
+- `src/components/trips/TripDetailModal.jsx`
+- `src/components/pricing/PricingCard.jsx`
+- `src/components/pricing/PricingEditForm.jsx`
+
+**Services:**
+- `src/services/tripService.js`
+- `src/services/pricingService.js`
+
+### Behavior Implemented
+- **Lịch sử chuyến đi**: TripHistoryPage hiển thị danh sách các chuyến đi, hỗ trợ tìm kiếm theo tên hành khách/tài xế, lọc trạng thái, lọc khoảng thời gian (`DateRangePicker`), phân trang và sắp xếp động trên mock data.
+- **Chi tiết chuyến đi**: TripDetailPage hiển thị chi tiết hành trình (điểm đi, điểm đến, dịch vụ, khoảng cách, cước phí) kết hợp liên kết thông tin khách hàng/tài xế. Tích hợp trục tiến trình dọc (`TripTimeline`) và nhật ký hệ thống (`TripStatusHistory`).
+- **Cấu hình giá**: PricingConfigPage hiển thị các thẻ cước phí phương tiện (`PricingCard`), cho phép mở Slide-in Drawer chỉnh sửa nhanh các giá trị cước phí thông qua `PricingEditForm` có validation đầu vào. Mock service lưu thay đổi cấu hình giá trực tiếp để cập nhật giao diện thời gian thực.
+
+### Validation
+- `npm run lint` đạt chuẩn 100% không còn bất kỳ lỗi nào trên toàn dự án.
+- `npm run build` đóng gói thành công không lỗi (built in 9.69s).
+- Chạy thử trên dev server local ổn định tại cổng `5173`.
+
+### Known Risks
+- Không có rủi ro nào lớn. Cần test đồng bộ dữ liệu cước phí với backend khi kết nối API thật.
+
