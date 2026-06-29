@@ -191,9 +191,26 @@
   .sidebar {
     transform: translateX(-100%);
     box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+    width: var(--sidebar-width) !important;
   }
 
   .sidebar.open {
     transform: translateX(0);
+  }
+
+  /* Ensure text is visible in mobile menu drawer */
+  .sidebar .logo-text,
+  .sidebar .nav-item span,
+  .sidebar .logout-btn span {
+    display: inline !important;
+  }
+
+  .sidebar .sidebar-user {
+    display: flex !important;
+  }
+
+  .sidebar .nav-item {
+    justify-content: flex-start !important;
+    padding: 10px 12px !important;
   }
 }

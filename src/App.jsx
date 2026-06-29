@@ -19,9 +19,13 @@ import NotFoundPage from './pages/NotFoundPage';
 // Router
 import ProtectedRoute from './router/ProtectedRoute';
 
+// Common
+import ErrorBoundary from './components/common/ErrorBoundary';
+
 function App() {
   return (
-    <BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
       <Toaster
         position="top-right"
         toastOptions={{
@@ -63,6 +67,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
+  </ErrorBoundary>
   );
 }
 

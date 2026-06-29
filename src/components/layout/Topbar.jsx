@@ -14,7 +14,7 @@ const pageTitles = {
 
 const Topbar = () => {
   const location = useLocation();
-  const { toggleSidebar } = useUIStore();
+  const { toggleSidebar, toggleMobileSidebar } = useUIStore();
 
   // Match page title from current path
   const getPageTitle = () => {
@@ -27,10 +27,18 @@ const Topbar = () => {
     return pageTitles[location.pathname] || 'GoRide Admin';
   };
 
+  const handleMenuClick = () => {
+    if (window.innerWidth < 1024) {
+      toggleMobileSidebar();
+    } else {
+      toggleSidebar();
+    }
+  };
+
   return (
     <header className="topbar">
       <div className="topbar-left">
-        <button className="topbar-menu-btn" onClick={toggleSidebar} title="Menu">
+        <button className="topbar-menu-btn" onClick={handleMenuClick} title="Menu">
           <Menu size={20} />
         </button>
         <h1 className="topbar-title">{getPageTitle()}</h1>

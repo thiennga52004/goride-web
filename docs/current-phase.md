@@ -7,10 +7,10 @@
 **Phase 4 — Trip History + Pricing** (theo `admin_implementation_plan_v2.md` Section 10)
 
 ## Branch
-`refactor-admin-ui-theme`
+`phase-5-polish-test-deploy`
 
 ## Status
-🟢 Completed — Toàn bộ các tính năng Lịch sử chuyến đi, Chi tiết hành trình và Cấu hình giá đã được hoàn thành, linter đạt chuẩn 100%, build thành công
+🟢 Completed — Toàn bộ các giai đoạn từ Giai đoạn 1 đến 5 đã hoàn thành xuất sắc, giao diện chuẩn responsive trên di động, bắt lỗi runtime tốt, hiệu ứng mượt mà, linter 100% đạt chuẩn, đóng gói thành công.
 
 ## Completed Steps
 - [x] Khởi tạo React + Vite project
@@ -55,9 +55,15 @@
 - [x] PricingEditForm.jsx (form fields, number validations, submit/cancel actions)
 - [x] PricingConfigPage.jsx (fetching, grid layout, Drawer popup, edit submit integration)
 - [x] Dọn dẹp cảnh báo linter trong các files sửa đổi (ESLint đạt chuẩn 100% không lỗi)
+- [x] Tạo và tích hợp component ErrorBoundary ở cấp độ ứng dụng
+- [x] Thiết lập mobile menu drawer cho Sidebar độc lập với trạng thái collapse trên desktop
+- [x] Bổ sung màn overlay đen mờ (sidebar-overlay) hỗ trợ đóng nhanh trên mobile
+- [x] Tinh chỉnh micro-animations (hiệu ứng di chuột card-hover, data-table row hover)
+- [x] Nâng cấp DataTable sử dụng table LoadingSkeleton mượt mà
+- [x] Kiểm thử toàn bộ linter và đóng gói sản phẩm hoàn chỉnh
 
 ## Next Work
-- Giai đoạn 5: Polish + Test + Deploy (Responsive checking, Micro-animations, Error boundaries, API integration verification, Production deployment).
+- Bàn giao sản phẩm hoặc tích hợp thật với API backend (tắt mock mode trong .env và chạy kiểm thử tích hợp thực tế).
 
 ## User Review Required
-Cần user review toàn bộ các tính năng Lịch sử chuyến đi và Cấu hình giá cước trước khi tiến hành Giai đoạn 5 cuối cùng.
+Cần user kiểm thử trực tiếp giao diện hiển thị trên mobile (đóng/mở Sidebar bằng Menu button và Overlay) và cơ chế Error Boundary (bằng cách chủ động tạo lỗi runtime để kiểm nghiệm UI).

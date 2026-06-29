@@ -1,12 +1,7 @@
 const StatCard = ({ icon, label, value, trend, trendUp, className = '' }) => {
   return (
-    <div className={`stat-card ${className}`} style={{
-      background: 'var(--bg-secondary)',
-      border: '1px solid var(--border-color)',
-      borderRadius: 'var(--radius-md)',
+    <div className={`stat-card card card-hover ${className}`} style={{
       padding: '20px',
-      boxShadow: 'var(--shadow-card)',
-      transition: 'all var(--transition-normal)',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
         <span style={{ fontSize: '20px' }}>{icon}</span>

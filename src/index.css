@@ -240,3 +240,24 @@ input, select, textarea {
 .Toastbar {
   font-family: 'Inter', sans-serif !important;
 }
+
+/* ==========================================
+   Micro-animations & Interactive Polishes
+   ========================================== */
+.data-table-row {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-fast) ease;
+}
+
+.data-table-row:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.card-hover {
+  transition: transform var(--transition-normal) ease, box-shadow var(--transition-normal) ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}

@@ -16,13 +16,9 @@ const DriverApprovalCard = ({ driver, onApprove, onReject, onViewDetail, loading
 
   return (
     <div
-      className="driver-approval-card"
+      className="driver-approval-card card card-hover"
       style={{
-        background: 'var(--bg-secondary)',
-        borderRadius: 'var(--radius-md)',
         padding: '20px',
-        border: '1px solid var(--border-color)',
-        boxShadow: 'var(--shadow-card)',
         display: 'flex',
         flexDirection: 'column',
         boxSizing: 'border-box',

@@ -23,17 +23,26 @@ const navItems = [
 ];
 
 const Sidebar = () => {
-  const { sidebarCollapsed, toggleSidebar } = useUIStore();
+  const { sidebarCollapsed, toggleSidebar, sidebarMobileOpen, closeMobileSidebar } = useUIStore();
   const { user, logout } = useAuthStore();
   const location = useLocation();
 
   const handleLogout = () => {
     logout();
+    if (window.innerWidth < 1024) {
+      closeMobileSidebar();
+    }
     window.location.href = ROUTES.LOGIN;
   };
 
+  const handleNavItemClick = () => {
+    if (window.innerWidth < 1024) {
+      closeMobileSidebar();
+    }
+  };
+
   return (
-    <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
+    <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''} ${sidebarMobileOpen ? 'open' : ''}`}>
       {/* Logo */}
       <div className="sidebar-logo">
         <span className="logo-icon">🚗</span>
@@ -53,6 +62,7 @@ const Sidebar = () => {
               to={item.path}
               className={`nav-item ${isActive ? 'active' : ''}`}
               title={sidebarCollapsed ? item.label : ''}
+              onClick={handleNavItemClick}
             >
               <Icon size={20} />
               {!sidebarCollapsed && <span>{item.label}</span>}

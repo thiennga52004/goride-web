@@ -1,5 +1,13 @@
+import LoadingSkeleton from './LoadingSkeleton';
+
 const DataTable = ({ columns = [], data = [], loading = false, emptyMessage = 'Không có dữ liệu', onSort, sortField, sortDirection }) => {
-  if (loading) return <div className="data-table-loading">Đang tải...</div>;
+  if (loading) {
+    return (
+      <div className="data-table-wrapper" style={{ padding: '16px' }}>
+        <LoadingSkeleton type="table" count={5} />
+      </div>
+    );
+  }
   if (!data.length) return <div className="data-table-empty">{emptyMessage}</div>;
 
   return (
@@ -33,7 +41,7 @@ const DataTable = ({ columns = [], data = [], loading = false, emptyMessage = 'K
         </thead>
         <tbody>
           {data.map((row, rowIndex) => (
-            <tr key={row.id || rowIndex} style={{ borderBottom: '1px solid var(--border-color)' }}>
+            <tr key={row.id || rowIndex} className="data-table-row">
               {columns.map((col) => (
                 <td
                   key={col.key}

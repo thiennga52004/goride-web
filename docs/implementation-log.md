@@ -232,3 +232,53 @@
 ### Known Risks
 - Không có rủi ro nào lớn. Cần test đồng bộ dữ liệu cước phí với backend khi kết nối API thật.
 
+
+---
+
+## Entry #5 — Phase 5: Polish + Test + Deploy Complete
+
+| Field | Value |
+|---|---|
+| **Date** | 2026-06-29 |
+| **Branch** | `phase-5-polish-test-deploy` |
+| **Phase** | Phase 5 — Polish + Test + Deploy |
+| **Task** | Hoàn thiện giao diện, tối ưu responsive trên thiết bị di động, bổ sung Error Boundary, hiệu ứng micro-animations và kiểm thử đóng gói |
+
+### Files Created
+- [ErrorBoundary.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/common/ErrorBoundary.jsx)
+- [ErrorBoundary.css](file:///d:/hoc/Project/LVTN/goride-web/src/components/common/ErrorBoundary.css)
+
+### Files Modified
+- [App.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/App.jsx)
+- [uiStore.js](file:///d:/hoc/Project/LVTN/goride-web/src/stores/uiStore.js)
+- [Layout.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/layout/Layout.jsx)
+- [Layout.css](file:///d:/hoc/Project/LVTN/goride-web/src/components/layout/Layout.css)
+- [Sidebar.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/layout/Sidebar.jsx)
+- [Sidebar.css](file:///d:/hoc/Project/LVTN/goride-web/src/components/layout/Sidebar.css)
+- [Topbar.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/layout/Topbar.jsx)
+- [DataTable.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/common/DataTable.jsx)
+- [StatCard.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/common/StatCard.jsx)
+- [PricingCard.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/pricing/PricingCard.jsx)
+- [DriverApprovalCard.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/components/drivers/DriverApprovalCard.jsx)
+- [index.css](file:///d:/hoc/Project/LVTN/goride-web/src/index.css)
+
+### Behavior Implemented
+- **Error Boundary**: Xây dựng component bắt lỗi runtime ở cấp độ ứng dụng. Thay thế màn hình trắng bằng trang báo lỗi chi tiết kèm nút Tải lại trang (chỉ hiện stacktrace ở chế độ development).
+- **Mobile Sidebar Drawer**:
+  - Tách biệt hai trạng thái thu nhỏ (collapse) trên desktop và mở ngăn kéo (open drawer) trên mobile thông qua Zustand `uiStore`.
+  - Thiết lập Topbar Menu Button để tự động nhận diện chiều rộng màn hình và đưa ra hành vi toggle phù hợp.
+  - Bổ sung màn overlay đen mờ (`.sidebar-overlay`) khi mở Sidebar trên mobile, nhấp vào overlay này sẽ tự động đóng Sidebar.
+  - Cập nhật Sidebar tự động đóng khi nhấp vào bất kỳ liên kết điều hướng nào trên di động để đảm bảo trải nghiệm liền mạch.
+  - Sửa lỗi hiển thị chữ của Sidebar trên mobile khi bị ẩn nhầm do trạng thái collapse của desktop.
+- **Table Loading Skeleton**: DataTable tự động sử dụng `LoadingSkeleton type="table"` khi ở trạng thái đang tải thay vì hiển thị dòng chữ "Đang tải..." thô sơ.
+- **Micro-animations**:
+  - Bổ sung hiệu ứng hover và transition nền mượt mà cho các hàng trong bảng `.data-table-row`.
+  - Tích hợp hiệu ứng di chuột nổi bật `.card-hover` (nâng nhẹ thẻ lên và đổ bóng) cho các thẻ chỉ số `StatCard`, thẻ phê duyệt tài xế `DriverApprovalCard` và thẻ cước phí `PricingCard`.
+
+### Validation
+- `npm run lint` đạt chuẩn 100% không còn lỗi.
+- `npm run build` đóng gói production thành công.
+
+### Known Risks
+- Mock data hoạt động bình thường. Khi kết nối API thật, cần đảm bảo API Gateway hoặc Load Balancer định tuyến đúng cho các tài nguyên tĩnh đã đóng gói.
+

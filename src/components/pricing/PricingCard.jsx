@@ -20,17 +20,12 @@ const PricingCard = ({ config, onEdit }) => {
 
   return (
     <div
-      className="pricing-card"
+      className="pricing-card card card-hover"
       style={{
-        background: 'var(--bg-secondary)',
-        borderRadius: 'var(--radius-md)',
         padding: '24px',
-        border: '1px solid var(--border-color)',
-        boxShadow: 'var(--shadow-card)',
         display: 'flex',
         flexDirection: 'column',
         boxSizing: 'border-box',
-        transition: 'all var(--transition-normal)',
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
