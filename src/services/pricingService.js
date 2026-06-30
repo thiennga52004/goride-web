@@ -2,7 +2,7 @@ import api from './api';
 import { API_ENDPOINTS } from '../constants/apiEndpoints';
 import { mockPricingConfigs } from './mockData';
 
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true' || import.meta.env.VITE_USE_MOCK_SERVICES === 'true';
 
 export const pricingService = {
   getPricingConfigs: async () => {

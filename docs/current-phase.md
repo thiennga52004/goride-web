@@ -10,7 +10,7 @@
 `phase-5-polish-test-deploy`
 
 ## Status
-🟢 Completed — Toàn bộ các giai đoạn từ Giai đoạn 1 đến 5 đã hoàn thành xuất sắc, giao diện chuẩn responsive trên di động, bắt lỗi runtime tốt, hiệu ứng mượt mà, linter 100% đạt chuẩn, đóng gói thành công.
+🟢 Completed — Toàn bộ các giai đoạn từ Giai đoạn 1 đến 5 đã hoàn thành xuất sắc, đã kết nối thành công với backend API thật (tắt Mock mode), giao diện chuẩn responsive trên di động, bắt lỗi runtime tốt, hiệu ứng mượt mà, linter 100% đạt chuẩn, đóng gói thành công.
 
 ## Completed Steps
 - [x] Khởi tạo React + Vite project
@@ -61,9 +61,11 @@
 - [x] Tinh chỉnh micro-animations (hiệu ứng di chuột card-hover, data-table row hover)
 - [x] Nâng cấp DataTable sử dụng table LoadingSkeleton mượt mà
 - [x] Kiểm thử toàn bộ linter và đóng gói sản phẩm hoàn chỉnh
+- [x] Tích hợp thật với API backend Spring Boot (tắt Mock mode trên Auth)
+- [x] Cấu hình chế độ Hybrid (`VITE_USE_MOCK_SERVICES=true`) để chạy các module admin chưa được backend hỗ trợ (như stats, pricing, trips) dưới dạng giả lập, tránh lỗi NoResourceFoundException (500)
 
 ## Next Work
-- Bàn giao sản phẩm hoặc tích hợp thật với API backend (tắt mock mode trong .env và chạy kiểm thử tích hợp thực tế).
+- Kiểm thử tích hợp và phối hợp phát triển nốt các API quản trị còn thiếu ở phía backend Spring Boot.
 
 ## User Review Required
-Cần user kiểm thử trực tiếp giao diện hiển thị trên mobile (đóng/mở Sidebar bằng Menu button và Overlay) và cơ chế Error Boundary (bằng cách chủ động tạo lỗi runtime để kiểm nghiệm UI).
+Cần user khởi chạy Spring Boot backend, thực hiện đăng nhập thật qua API và kiểm tra giao diện Dashboard, các trang quản trị chạy ổn định nhờ cơ chế Hybrid Mock.

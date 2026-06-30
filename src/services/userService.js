@@ -2,7 +2,7 @@ import api from './api';
 import { API_ENDPOINTS } from '../constants/apiEndpoints';
 import { mockUsers } from './mockData';
 
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true' || import.meta.env.VITE_USE_MOCK_SERVICES === 'true';
 
 export const userService = {
   getUsers: async (params = {}) => {

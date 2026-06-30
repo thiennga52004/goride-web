@@ -23,7 +23,13 @@ api.interceptors.request.use(
 
 // Response interceptor: unwrap envelope + auto-refresh on 401
 api.interceptors.response.use(
-  (response) => response.data,
+  (response) => {
+    const res = response.data;
+    if (res && res.success && res.data !== undefined) {
+      return res.data;
+    }
+    return res;
+  },
   async (error) => {
     const originalRequest = error.config;
 

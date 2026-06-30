@@ -15,7 +15,24 @@ export const authService = {
         refreshToken: 'mock-refresh-token-' + Date.now(),
       };
     }
-    return api.post(API_ENDPOINTS.LOGIN, { phone, password });
+    const response = await api.post(API_ENDPOINTS.LOGIN, { phone, password });
+    
+    // Map backend roles list to a single role string
+    const role = response.roles?.includes('ADMIN')
+      ? 'ADMIN'
+      : (response.roles?.includes('DRIVER') ? 'DRIVER' : 'PASSENGER');
+
+    return {
+      user: {
+        id: response.userId,
+        name: 'Admin',
+        phone: phone,
+        role: role,
+        status: 'ACTIVE',
+      },
+      accessToken: response.accessToken,
+      refreshToken: response.refreshToken,
+    };
   },
 
   refreshAccessToken: async (refreshToken) => {

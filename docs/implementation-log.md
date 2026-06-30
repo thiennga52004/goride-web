@@ -282,3 +282,37 @@
 ### Known Risks
 - Mock data hoạt động bình thường. Khi kết nối API thật, cần đảm bảo API Gateway hoặc Load Balancer định tuyến đúng cho các tài nguyên tĩnh đã đóng gói.
 
+
+---
+
+## Entry #6 — Real API Integration & Loop Fixes
+
+| Field | Value |
+|---|---|
+| **Date** | 2026-06-30 |
+| **Branch** | `phase-5-polish-test-deploy` |
+| **Phase** | Phase 5 — Polish + Test + Deploy (Integration) |
+| **Task** | Tích hợp ứng dụng với API backend Spring Boot thật chạy trên localhost và sửa lỗi lặp request |
+
+### Files Modified
+- [.env.development](file:///d:/hoc/Project/LVTN/goride-web/.env.development)
+- [authService.js](file:///d:/hoc/Project/LVTN/goride-web/src/services/authService.js)
+- [api.js](file:///d:/hoc/Project/LVTN/goride-web/src/services/api.js)
+- [useFetch.js](file:///d:/hoc/Project/LVTN/goride-web/src/hooks/useFetch.js)
+- [LoginPage.jsx](file:///d:/hoc/Project/LVTN/goride-web/src/pages/LoginPage.jsx)
+- [statsService.js](file:///d:/hoc/Project/LVTN/goride-web/src/services/statsService.js)
+- [userService.js](file:///d:/hoc/Project/LVTN/goride-web/src/services/userService.js)
+- [driverService.js](file:///d:/hoc/Project/LVTN/goride-web/src/services/driverService.js)
+- [tripService.js](file:///d:/hoc/Project/LVTN/goride-web/src/services/tripService.js)
+- [pricingService.js](file:///d:/hoc/Project/LVTN/goride-web/src/services/pricingService.js)
+
+### Behavior Implemented
+- **Tích hợp Hybrid (Mock/Real)**: Xác định rằng backend Spring Boot hiện tại chỉ mới hiện thực hóa các API Authentication (`/auth/login`, `/auth/refresh`, `/auth/logout`), trong khi các chức năng quản trị còn lại (stats, pricing, trips, driver approval) chưa được cài đặt (gây lỗi `NoResourceFoundException: No static resource api/v1/admin/stats` và lỗi 404/500). Đã thêm cấu hình `VITE_USE_MOCK_SERVICES=true` trong `.env.development` để cho phép đăng nhập qua API thật, đồng thời chạy các trang quản lý khác bằng dữ liệu mock.
+- **Ánh xạ AuthResponse**: Spring Boot trả về cấu trúc `{ userId, accessToken, refreshToken, roles: [...] }`. Đã cập nhật `authService.login` chuyển mảng `roles` thành chuỗi `role` đơn và bọc vào đối tượng `user` tương thích với Frontend.
+- **Sửa lỗi lặp vô hạn (429 Error)**: Đối tượng inline params (như `{ from, to }` ở Dashboard) thay đổi tham chiếu trên mỗi render, kích hoạt `execute` của `useFetch` chạy liên tục. Đã sửa lỗi bằng cách dùng `useRef` lưu trữ `params` trong `useFetch.js` để tránh trigger re-render loop.
+- **Dọn dẹp Console Warning**: Bổ sung `autoComplete` vào `LoginPage.jsx` để trình duyệt không báo cảnh báo bảo mật.
+
+### Validation
+- `npm run lint` đạt chuẩn 100%.
+- `npm run build` đóng gói production thành công.
+

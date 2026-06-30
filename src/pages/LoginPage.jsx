@@ -43,6 +43,7 @@ const LoginPage = () => {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="0901234567"
               required
+              autoComplete="username"
             />
           </div>
           <div className="form-group">
@@ -54,6 +55,7 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Nhập mật khẩu"
               required
+              autoComplete="current-password"
             />
           </div>
           {error && <div className="login-error">{error}</div>}
